@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listas</title>
-
-    <link href="app.css" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3d4db7">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Tareas de alejandro grijalva</title>
+<link href="app.css" rel="stylesheet"/>
+<link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
-    
-    <header>
-        Lista
-    </header>
+<div id="banner" role="status" aria-live="polite"></div>
+<main>
+  <h1>Tareas de Alejandro Grijalva</h1>
+  <p class="sub" id="summary"></p>
 
-    <div id="lista"></div>
-    
-        <script src="app.js"></script>
+  <form class="panel" id="form" autocomplete="off">
+    <input type="text" name="title" placeholder="¿Qué tienes que hacer?" maxlength="200" required aria-label="Título">
+    <textarea name="notes" rows="2" placeholder="Notas (opcional)" aria-label="Notas"></textarea>
+    <div class="row">
+      <input type="date" name="due_date" required aria-label="Fecha límite">
+      <button class="btn" type="submit">Agregar tarea</button>
+    </div>
+  </form>
+
+  <div class="tabs" role="group" aria-label="Filtro">
+    <button data-f="all" aria-pressed="true">Todas</button>
+    <button data-f="pending" aria-pressed="false">Pendientes</button>
+    <button data-f="done" aria-pressed="false">Hechas</button>
+  </div>
+  <ul id="list"></ul>
+</main>
+
+
+<script src="app.js"></script>
+
 </body>
 </html>

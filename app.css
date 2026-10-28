@@ -1,37 +1,50 @@
-body {
-    margin: 0;
-    background-color: #cfc8dc;
-    font-family: Arial, Helvetica, sans-serif;
+:root{
+  --bg:#eef1f6; --card:#fff; --ink:#1b2433; --muted:#6b7588; --line:#dde2ec;
+  --accent:#3d4db7; --accent-ink:#fff; --done:#2f9e6f; --late:#e5484d;
+  --warn-bg:#1b2433; --warn-ink:#fff; --radius:14px;
 }
-
-
-header{
-    background-color: teal;
-    color: white;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding: 30px 40px;
-    font-size: 22px;
+@media (prefers-color-scheme:dark){
+  :root{--bg:#10141d; --card:#1a2030; --ink:#e8ecf5; --muted:#8f9ab0; --line:#2a3246;
+    --accent:#7d8cf5; --accent-ink:#10141d; --done:#4cc38a; --warn-bg:#f0a020; --warn-ink:#10141d;}
 }
-
-#lista{
-    margin-top: 100px;
-}
-
-.card{
-    background-color: white;
-    padding: 30px;
-    margin: 20px;
-    border-radius: 7px;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-
-
-}
-.card h2{
-    margin-top: 0;
-}
-
-
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+#banner{position:sticky;top:0;z-index:5;background:var(--warn-bg);color:var(--warn-ink);
+  padding:.65rem 1rem;font-size:.92rem;text-align:center;display:none}
+#banner.show{display:block}
+main{max-width:640px;margin:0 auto;padding:1.5rem 1rem 3rem}
+h1{font-size:2rem;letter-spacing:-.02em;margin:0 0 .15rem}
+.sub{color:var(--muted);margin:0 0 1.25rem;min-height:1.4em}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:.75rem;
+  display:flex;flex-direction:column;gap:.55rem}
+.panel{margin-bottom:1rem}
+input,textarea,button{font:inherit;color:inherit}
+input[type=text],input[type=date],textarea{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.6rem .75rem;min-width:0;width:100%}
+textarea{resize:vertical;min-height:2.6rem}
+.row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.row>input[type=date]{flex:1 1 9rem;width:auto}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:.6rem 1.1rem;font-weight:600;cursor:pointer}
+.btn.ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+.tabs{display:flex;gap:.4rem;margin-bottom:.75rem}
+.tabs button{background:none;border:1px solid var(--line);border-radius:999px;padding:.3rem .9rem;cursor:pointer;color:var(--muted)}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+li{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:var(--radius);
+  padding:.7rem .8rem;display:flex;align-items:flex-start;gap:.75rem}
+li.late{border-left-color:var(--late)} li.done{border-left-color:var(--done)}
+li.editing{display:block}
+.chk{appearance:none;width:1.45rem;height:1.45rem;border:2px solid var(--line);border-radius:50%;margin:.1rem 0 0;cursor:pointer;flex:none;display:grid;place-content:center}
+.chk:checked{background:var(--done);border-color:var(--done)}
+.chk:checked::after{content:"";width:.35rem;height:.7rem;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.body{flex:1;min-width:0}
+.title{display:block;overflow-wrap:anywhere;cursor:pointer;background:none;border:0;padding:0;text-align:left;width:100%;font-weight:500}
+li.done .title{text-decoration:line-through;color:var(--muted)}
+.notes{margin:.15rem 0 0;color:var(--muted);font-size:.92rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.meta{font-size:.82rem;color:var(--muted);margin-top:.15rem} li.late .meta{color:var(--late)}
+.pend{font-size:.78rem;color:var(--muted)}
+.del{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1.25rem;line-height:1;padding:.2rem .3rem}
+.del:hover{color:var(--late)}
+.empty{display:block;text-align:center;color:var(--muted);padding:2rem 1rem;border:1px dashed var(--line);border-left-width:1px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}

@@ -1,0 +1,14 @@
+{
+    "name": "Tarea",
+    "short_name": "mistareas",
+    "start_url": "./",
+    "display": "standalone",
+    "description": "Una nueva app PWA",
+    "icons": [
+        {
+            "src": "./Icon2.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ]
+}
